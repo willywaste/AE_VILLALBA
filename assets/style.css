@@ -38,7 +38,7 @@
 .nav-btn {
     display: flex;
     justify-content: center;
-    background-color: rgb(231, 34, 155);
+    background-color: rgb(247, 74, 97);
     padding: 45px;
 }
 
@@ -111,7 +111,7 @@ a {
 .form-group {
     width: 600px;
     padding: 20px;
-    border-color: rgb(231, 34, 155);
+    border-color: rgb(247, 74, 97);
 }
 
 .form-group>label {
