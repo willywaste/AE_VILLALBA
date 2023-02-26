@@ -44,6 +44,7 @@
 
 .nav-btn>a {
     text-decoration: none;
+
 }
 
 .button-home {
@@ -97,13 +98,18 @@ a {
 
 .cards {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 4rem;
-    margin: 30px;
+    gap: 2rem;
+    margin: 10px;
 
 }
-
+.card>img{
+    object-fit: cover;
+    width: 100%;
+    height: 210px;
+}
 .card-body {
 
     background-color: rgb(190, 190, 190);
