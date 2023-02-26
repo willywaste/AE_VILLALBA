@@ -186,6 +186,7 @@ function eventCards(array, contenedor) {
         <div class="card-body">
             <h5 class="card-title">${dataEvent.name}</h5>
             <p class="card-text">${dataEvent.category}</p>
+            <p class="card-text">$${dataEvent.price}</p>
             <a href="/pages/details.html" class="btn btn-secondary">See more...</a>
         </div>
     </div>
