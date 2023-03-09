@@ -42,7 +42,7 @@ const eventCards = (array, contenedor) => {
             <h5 class="card-title">${dataEvent.name}</h5>
             <p class="card-text">${dataEvent.category}</p>
             <p class="card-text">$${dataEvent.price}</p>
-            <a href="/pages/details.html" class="btn btn-secondary">See more...</a>
+            <a href="/pages/details.html?id=${dataEvent._id}" class="btn btn-secondary">See more...</a>
         </div>
     </div>
                 `
