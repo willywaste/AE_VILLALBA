@@ -7,6 +7,11 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body{
+    position: relative;
+    padding-bottom: 100px;
+    min-height: 100vh;
+}
 
 .navbar {
     background-color: rgb(190, 190, 190);
@@ -64,9 +69,9 @@ a {
 }
 
 .btn-group {
-    margin: 40px;
-    width: 650px;
-    height: 5rem;
+    border-radius: 30px 30px;
+    width: 120px;
+    height: 50px;
 }
 
 .btn-group>label {
@@ -81,18 +86,25 @@ a {
 .input-group {
     width: 400px;
     height: 30px;
-    margin: 60px
+    padding: 30px;
 }
-
+main{
+    flex-grow: 1;
+    height: 100%;
+}
 .check-main {
     display: flex;
-    gap: 8rem;
+    margin-left:10px;
 
 }
 
+.checkSearch {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
 
-.details-body
-{
+.details-body {
     background-color: rgb(247, 74, 97);
 }
 
@@ -102,10 +114,11 @@ a {
     flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
-    margin: 10px;
+    margin: 30px;
 
 }
-.card>img{
+
+.card>img {
     object-fit: cover;
     width: 100%;
     height: 210px;
@@ -116,6 +129,16 @@ a {
 
     background-color: rgb(190, 190, 190);
 
+}
+.card-body2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(190, 190, 190);
+    border-radius: 0px 0px 10px 10px;
+    padding: 30px;
 }
 
 .contact {
@@ -146,6 +169,11 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+    
 }
 
 .footer-amazing>img {
@@ -161,14 +189,28 @@ a {
 }
 
 
-
-
-
-@media screen and (max-width:760px) {
-
+@media screen and (max-width:930px) {
     .check-main {
+        justify-content:center;
+        align-items: center;
         flex-wrap: wrap;
         gap: 5px;
+        padding: 10px;
+    }
+    .checkSearch{
+        flex-wrap: wrap;
+    }
+}
+@media screen and (max-width:760px) {
+    .checkSearch{
+        flex-wrap: wrap;
+    }
+    .check-main {
+        justify-content:center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 10px;
     }
 
     .navbar-toggler {
@@ -217,7 +259,10 @@ table {
 }
 
 
-
+.noSeEncontro{
+    display: flex;
+    padding: 8rem;
+}
 
 
 
