@@ -36,7 +36,6 @@ body{
     object-fit: cover;
     width: 1930px;
     height: 300px;
-    background-position: top;
 }
 .collapse {
     display: flex;
@@ -217,6 +216,11 @@ main{
     .checkSearch{
         flex-wrap: wrap;
     }
+    .buttonsDetails{
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
 }
 @media screen and (max-width:760px) {
     .checkSearch{
@@ -279,7 +283,13 @@ thead {
 table {
     text-align: center;
 }
+.buttonsDetails{
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
 
+}
 
 .noSeEncontro{
     display: flex;
@@ -302,6 +312,12 @@ table {
     .btn-group {
         flex-wrap: wrap;
         align-items: center;
+
+    }
+    .buttonsDetails{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
 
     }
 
