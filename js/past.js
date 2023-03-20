@@ -1,19 +1,33 @@
-import data from './data.js'
+let jsonEvents = [];
+
+fetch('../js/amazing.json').then(response => {
+    return response.json();
+}).then(data => {
+    jsonEvents = data.events.filter(e=> e.assistance);
+    eventsList = jsonEvents;
+
+    let categories = newCategories(jsonEvents)
+    newCheckbox(categories, $checkBoxes);
+
+    eventCards(jsonEvents, $container)
+
+    
+
+}).catch(err => {
+    console.error(err)
+});
 
 const $container = document.getElementById('container');
 const fragment = document.createDocumentFragment();
 const $checkBoxes = document.getElementById('checkbox');
 const $search = document.getElementById('search');
 
-
-
 const eventCards = (array, contenedor) => {
     $container.innerHTML = ''
     array.forEach(dataEvent => {
-        if (data.currentDate >= dataEvent.date) {
-            let div = document.createElement('div');
-            div.className = "card"
-            div.innerHTML += `
+        let div = document.createElement('div');
+        div.className = "card"
+        div.innerHTML += `
         <div class="card" style="width: 18rem;">
         <img class="card-img-top" src=${dataEvent.image} alt="Card image cap">
         <div class="card-body">
@@ -24,12 +38,12 @@ const eventCards = (array, contenedor) => {
         </div>
     </div>
                 `
-            fragment.appendChild(div)
-        }
+        fragment.appendChild(div)
     })
     contenedor.appendChild(fragment)
 }
-eventCards(data.events, $container)
+
+
 
 const newCategories = (array) => {
     let categories = array.map(categoryData => categoryData.category)
@@ -41,8 +55,6 @@ const newCategories = (array) => {
     }, [])
     return categories
 }
-let categories = newCategories(data.events)
-
 
 const newCheckbox = (categories, $checkBoxes) => {
     categories.forEach(categoryData => {
@@ -57,12 +69,11 @@ const newCheckbox = (categories, $checkBoxes) => {
         $checkBoxes.appendChild(div)
     })
 }
-newCheckbox(categories, $checkBoxes);
-
 
 
 const filterSearch = (array, value) => {
-    let filteredArray = array.filter(element => element.name.toLowerCase().includes(value.toLowerCase()))
+    let filteredArray = array.filter(element => element.name.toLowerCase().includes(value.toLowerCase().trim()))
+
     console.log(filteredArray)
     return filteredArray
 
@@ -80,24 +91,39 @@ const filterCheck = (array) => {
 }
 
 
+let eventsList = jsonEvents;
+
 $search.addEventListener('keyup', (e) => {
-    let filterData = filterSearch(data.events, e.target.value)
-    if (filterData.length === 0) {
-        $container.innerHTML = 
-        `
+    let filteredDataSearch = filterSearch(jsonEvents, e.target.value)
+    filteredDataSearch = filterCheck(filteredDataSearch)
+    if (filteredDataSearch.length === 0) {
+        $container.innerHTML =
+            `
         <h1 class=noSeEncontro>No results found :(</h1>
         
         `
     } else {
         $container.innerHTML = "";
-        eventCards(filterData, $container)
+        eventCards(filteredDataSearch, $container)
+
     }
+
 })
 
 
 
 $checkBoxes.addEventListener('change', () => {
-    let filterData = filterCheck(data.events)
-    eventCards(filterData, $container)
-})
+    eventsList = filterCheck(jsonEvents)
+    eventsList = filterSearch(eventsList, $search.value)
+    if (eventsList.length === 0) {
+        $container.innerHTML =
+            `
+        <h1 class=noSeEncontro>No results found :(</h1>
+        
+        `
+    } else {
+        $container.innerHTML = "";
+        eventCards(eventsList, $container)
 
+    }
+})

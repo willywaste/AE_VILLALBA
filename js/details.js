@@ -1,13 +1,24 @@
-import data from './data.js'
+
 
 let detailContainer = document.querySelector('#eventDetail')
 
 const queryString = location.search
 const params = new URLSearchParams(queryString)
 const id = params.get("id")
-const selectedEvent = data.events.find(event => event._id == id)
+let selectedEvent = {}
 
-console.log(selectedEvent)
+fetch('../js/amazing.json').then(response => {
+        return response.json();
+}).then(data => {
+        selectedEvent = data.events.find(event => event._id == id)
+        createDetails(selectedEvent, detailContainer)
+
+
+}).catch(err => {
+        console.error(err)
+});
+
+
 
 function createDetails(selectedEvent, container) {
         let div = document.createElement('div')
@@ -22,12 +33,14 @@ function createDetails(selectedEvent, container) {
         <p class="card-text">${selectedEvent.description}</p>
         <p class="card-text">Capacity for ${selectedEvent.capacity} people.</p>
         <p class="card-text">the value of the ticket is $${selectedEvent.price}</p>
-        <a href="/index.html" class="btn btn-secondary">Go back</a>
+        <div class="buttonsDetails">
+        <a href="/index.html" class="btn btn-secondary">Go to Home</a>
+        <a href="/pages/upcoming-events.html" class="btn btn-secondary">Go to Upcoming</a>
+        <a href="/pages/past-events.html" class="btn btn-secondary">Go to Past Events</a>
+        </div>
 
 </div>
                 `
         container.appendChild(div)
 
 }
-
-createDetails(selectedEvent, detailContainer)
